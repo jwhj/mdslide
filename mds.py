@@ -4,7 +4,7 @@ import shutil
 import webbrowser
 import argparse
 import json
-insdir='/home/jwhj/test/mdslider/'
+insdir='/home/jwhj/test/mdslide/' # replace it with your install directory
 rvjs_prefix='file://'+insdir+'reveal.js/'
 tpl_name='tpl.html'
 def view(rvjs_prefix,fn):
