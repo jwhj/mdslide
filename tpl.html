@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="<!--rvjs-->css/reveal.css">
+		<link rel="stylesheet" href="<!--rvjs-->css/theme/blood.css">
+
+		<!--Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="<!--rvjs-->lib/css/zenburn.css">
+
+		<!--Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '<!--rvjs-->css/print/pdf.css' : '<!--rvjs-->css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			img{
+				border-width: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div id="blabla"class="slides">
+<!--insert here-->
+			</div>
+		</div>
+
+		<script src="<!--rvjs-->lib/js/head.min.js"></script>
+		<script src="<!--rvjs-->js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				/*math: {
+					mathjax: 'js/mathjax/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},*/
+				math: {
+					//enableGlobally: true,
+					katexScript:     '<!--rvjs-->lib/katex/katex.min.js',
+					katexStylesheet: '<!--rvjs-->lib/katex/katex.min.css'
+				},
+
+				transition: 'zoom', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '<!--rvjs-->plugin/math-katex/math-katex.js' , async: true},
+					{ src: '<!--rvjs-->plugin/markdown/marked.js' },
+					{ src: '<!--rvjs-->plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); },
+						callback: function() {
+							Array.prototype.forEach.call(document.querySelectorAll('section > p,li'), function(ele){ 
+								var fragIndex = ele.innerHTML.indexOf("--")
+								if (fragIndex != -1){
+									ele.innerHTML = ele.innerHTML.replace("--", "");
+									ele.className = 'fragment'; 
+								}
+							});
+						  }  
+					},
+					{ src: '<!--rvjs-->plugin/notes/notes.js', async: true },
+					{ src: '<!--rvjs-->plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
