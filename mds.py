@@ -4,10 +4,10 @@ import shutil
 import webbrowser
 import argparse
 import json
-insdir='/home/jwhj/test/mdslide/' # replace it with your install directory
+insdir='/home/manjaro/Downloads/mdslide/' # replace it with your install directory
 rvjs_prefix='file://'+insdir+'reveal.js/'
 tpl_name='tpl.html'
-def view(rvjs_prefix,fn):
+def view(rvjs_prefix,fn,flag=1):
 	f=open(tpl_name,'r')
 	s=f.read()
 	f.close()
@@ -37,14 +37,21 @@ def view(rvjs_prefix,fn):
 	f=open(tmpf,'w')
 	f.write('\n'.join(s1))
 	f.close()
-	webbrowser.open(tmpf)
+	if (flag): webbrowser.open(tmpf)
 if __name__=='__main__':
 	parser=argparse.ArgumentParser(description='blablabla')
 	parser.add_argument('-i',type=str)
 	parser.add_argument('-p',action='store_true')
+	parser.add_argument('-e',action='store_true')
 	parser.add_argument('--init',action='store_true')
 	args=parser.parse_args()
 	if (args.init):
 		shutil.copy(insdir+'tpl.html','./tpl.html')
 	elif (args.p):
 		view(rvjs_prefix,args.i)
+	elif (args.e):
+		epath='./'+args.i+'.e/'
+		shutil.rmtree(epath)
+		shutil.copytree(insdir+'reveal.js',epath)
+		view('',args.i,0)
+		shutil.copy(args.i+'.tmp.html',epath)
