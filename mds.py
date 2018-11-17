@@ -51,7 +51,10 @@ if __name__=='__main__':
 		view(rvjs_prefix,args.i)
 	elif (args.e):
 		epath='./'+args.i+'.e/'
-		shutil.rmtree(epath)
+		try:
+			shutil.rmtree(epath)
+		except:
+			pass
 		shutil.copytree(insdir+'reveal.js',epath)
 		view('',args.i,0)
 		shutil.copy(args.i+'.tmp.html',epath)
