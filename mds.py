@@ -4,7 +4,7 @@ import shutil
 import webbrowser
 import argparse
 import json
-insdir='/home/manjaro/Downloads/mdslide/' # replace it with your install directory
+insdir='/home/manjaro/Downloads/mdslide/' # replace it with the directory of the current file
 rvjs_prefix='file://'+insdir+'reveal.js/'
 tpl_name='tpl.html'
 def view(rvjs_prefix,fn,flag=1):
