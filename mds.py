@@ -6,7 +6,8 @@ import argparse
 import json
 #__import__('pdb').set_trace()
 insdir='/home/jwhj/test/mdslide/' # replace it with your install directory
-rvjs_prefix='file://'+insdir+'reveal.js/'
+#rvjs_prefix='file://'+insdir+'reveal.js/'
+rvjs_prefix='http://localhost:4000/'
 tpl_name='tpl.html'
 def view(rvjs_prefix,fn,flag=1):
 	f=open(tpl_name,'r')
